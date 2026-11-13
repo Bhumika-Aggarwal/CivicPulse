@@ -1,0 +1,26 @@
+{
+  "project": "CivicPulse",
+  "version": "2.0",
+  "workflow": {
+    "discuss_before_plan": true,
+    "plan_before_execute": true,
+    "verify_after_execute": true,
+    "atomic_commits": true,
+    "require_tests": true
+  },
+  "phases": {
+    "total": 9,
+    "current": 0,
+    "active": "Phase 0 — Repository Audit & Architecture Plan"
+  },
+  "constraints": {
+    "root_files_only": [".gitignore"],
+    "root_directories_only": ["frontend", "backend", ".planning"],
+    "no_ai_in_mvp": true,
+    "no_microservices": true,
+    "strict_typescript": true,
+    "mobile_first": true
+  },
+  "runtime": "antigravity",
+  "created": "2026-11-14"
+}
