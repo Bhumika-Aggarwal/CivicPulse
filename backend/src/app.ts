@@ -7,6 +7,8 @@ import { env } from './config/env.js';
 import { logger } from './config/logger.js';
 import { pool } from './db/client.js';
 
+import { authRouter } from './modules/auth/auth.routes.js';
+
 export const app = express();
 
 // Security and utility middleware
@@ -28,6 +30,9 @@ app.use(
     },
   })
 );
+
+// Mount versioned modules
+app.use('/api/v1/auth', authRouter);
 
 // Health check endpoint
 app.get('/api/v1/health', async (_req: Request, res: Response) => {
