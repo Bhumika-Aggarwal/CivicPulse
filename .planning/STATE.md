@@ -1,14 +1,14 @@
 # CivicPulse — Project State
 
 ## Current Phase
-**Phase 0** — Repository Audit & Architecture Plan
+**Phase 1** — Foundation, Neon Database & PostGIS Setup
 
 ## Phase Status
 | Phase | Name | Status |
 |-------|------|--------|
-| 0 | Repository Audit & Plan | 🟡 In Progress |
-| 1 | Foundation & Neon | ⬜ Not Started |
-| 2 | Authentication & RBAC | ⬜ Not Started |
+| 0 | Repository Audit & Plan | 🟢 Completed |
+| 1 | Foundation & Neon | 🟢 Completed |
+| 2 | Authentication & RBAC | ⬜ Ready to Start |
 | 3 | Complaint Management | ⬜ Not Started |
 | 4 | Assignment & Worker Workflow | ⬜ Not Started |
 | 5 | Tracking & Maps | ⬜ Not Started |
