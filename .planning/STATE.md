@@ -1,7 +1,7 @@
 # CivicPulse — Project State
 
 ## Current Phase
-**Phase 2** — Authentication, RBAC, Users & Departments
+**Phase 3** — Complaint Submission & Citizen Tracking
 
 ## Phase Status
 | Phase | Name | Status |
@@ -9,7 +9,8 @@
 | 0 | Repository Audit & Plan | 🟢 Completed |
 | 1 | Foundation & Neon | 🟢 Completed |
 | 2 | Authentication & RBAC | 🟢 Completed |
-| 3 | Complaint Management | ⬜ Ready to Start |
+| 3 | Complaint Management | 🟢 Completed |
+| 4 | Assignment & Worker Workflow | ⬜ Ready to Start |
 | 3 | Complaint Management | ⬜ Not Started |
 | 4 | Assignment & Worker Workflow | ⬜ Not Started |
 | 5 | Tracking & Maps | ⬜ Not Started |
