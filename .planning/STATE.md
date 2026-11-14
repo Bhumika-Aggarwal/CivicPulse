@@ -1,7 +1,7 @@
 # CivicPulse — Project State
 
 ## Current Phase
-**Phase 3** — Complaint Submission & Citizen Tracking
+**Phase 4** — Supervisor Assignment & Worker Field Workflow
 
 ## Phase Status
 | Phase | Name | Status |
@@ -10,7 +10,8 @@
 | 1 | Foundation & Neon | 🟢 Completed |
 | 2 | Authentication & RBAC | 🟢 Completed |
 | 3 | Complaint Management | 🟢 Completed |
-| 4 | Assignment & Worker Workflow | ⬜ Ready to Start |
+| 4 | Assignment & Worker Workflow | 🟢 Completed |
+| 5 | Tracking & Maps | ⬜ Ready to Start |
 | 3 | Complaint Management | ⬜ Not Started |
 | 4 | Assignment & Worker Workflow | ⬜ Not Started |
 | 5 | Tracking & Maps | ⬜ Not Started |

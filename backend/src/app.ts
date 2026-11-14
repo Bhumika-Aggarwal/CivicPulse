@@ -9,6 +9,8 @@ import { pool } from './db/client.js';
 
 import { authRouter } from './modules/auth/auth.routes.js';
 import { complaintRouter } from './modules/complaints/complaints.routes.js';
+import { authorityRouter } from './modules/authority/authority.routes.js';
+import { workerRouter } from './modules/worker/worker.routes.js';
 
 export const app = express();
 
@@ -35,6 +37,8 @@ app.use(
 // Mount versioned modules
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/complaints', complaintRouter);
+app.use('/api/v1/authority', authorityRouter);
+app.use('/api/v1/worker', workerRouter);
 
 // Health check endpoint
 app.get('/api/v1/health', async (_req: Request, res: Response) => {

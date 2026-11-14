@@ -10,11 +10,15 @@ import {
   PlusCircle,
   List,
   TrendingUp,
+  UserCheck,
+  HardHat,
 } from 'lucide-react';
 import { useAuth } from './context/AuthContext';
 import { AuthModal } from './features/auth/AuthModal';
 import { ComplaintForm } from './features/complaints/ComplaintForm';
 import { ComplaintList } from './features/complaints/ComplaintList';
+import { AuthorityDashboard } from './features/authority/AuthorityDashboard';
+import { WorkerPortal } from './features/worker/WorkerPortal';
 
 interface HealthData {
   status: string;
@@ -28,7 +32,7 @@ export function App() {
   const { user, logout } = useAuth();
   const [health, setHealth] = useState<HealthData | null>(null);
   const [authModalOpen, setAuthModalOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState<'submit' | 'list'>('submit');
+  const [activeTab, setActiveTab] = useState<'submit' | 'list' | 'authority' | 'worker'>('submit');
   const [refreshTrigger, setRefreshTrigger] = useState(0);
 
   useEffect(() => {
@@ -48,7 +52,6 @@ export function App() {
       {/* Top Navbar */}
       <header className="border-b border-slate-200/80 bg-white/90 backdrop-blur-md sticky top-0 z-40 shadow-xs">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-          {/* Brand Logo */}
           <div className="flex items-center space-x-3">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-600 via-sky-500 to-blue-600 text-white flex items-center justify-center shadow-md shadow-sky-500/20">
               <Activity className="w-6 h-6 animate-pulse" />
@@ -59,14 +62,13 @@ export function App() {
                   CivicPulse
                 </h1>
                 <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 uppercase tracking-wider">
-                  Live
+                  Phase 4 Live
                 </span>
               </div>
               <p className="text-[11px] font-medium text-slate-500">Smart City Operations & Citizen Reporting</p>
             </div>
           </div>
 
-          {/* User Nav Actions */}
           <div className="flex items-center space-x-3">
             {user ? (
               <div className="flex items-center space-x-3">
@@ -111,33 +113,32 @@ export function App() {
                 City Operations Center
               </span>
               <h2 className="text-2xl font-extrabold tracking-tight text-white">
-                Report & Track Municipal Issues in Real-Time
+                Multi-Role Civic Workflow & Worker Dispatch
               </h2>
               <p className="text-xs text-slate-300 max-w-xl">
-                Every reported issue receives a unique reference number, deterministic category routing to city engineers, and verified before-and-after proof of resolution.
+                Citizen reporting, supervisor triage & worker dispatch, and step-by-step field task execution with GPS tracking readiness.
               </p>
             </div>
 
-            {/* Quick Live Stats */}
             <div className="flex items-center space-x-3 shrink-0">
               <div className="bg-white/10 backdrop-blur-md border border-white/10 rounded-xl p-3 text-center min-w-[90px]">
                 <span className="text-xs text-sky-200 block font-medium">Departments</span>
                 <span className="text-lg font-bold">5 Active</span>
               </div>
               <div className="bg-white/10 backdrop-blur-md border border-white/10 rounded-xl p-3 text-center min-w-[90px]">
-                <span className="text-xs text-sky-200 block font-medium">Avg Response</span>
-                <span className="text-lg font-bold">&lt; 24 Hrs</span>
+                <span className="text-xs text-sky-200 block font-medium">Field Status</span>
+                <span className="text-lg font-bold">Live Flow</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* View Switcher Tabs */}
-        <div className="flex items-center justify-between border-b border-slate-200/80 pb-2">
-          <div className="flex space-x-2">
+        {/* View Switcher Tabs (Citizen / Supervisor / Worker) */}
+        <div className="flex items-center justify-between border-b border-slate-200/80 pb-2 flex-wrap gap-2">
+          <div className="flex space-x-2 flex-wrap gap-y-1">
             <button
               onClick={() => setActiveTab('submit')}
-              className={`flex items-center space-x-2 px-5 py-2.5 text-xs font-bold rounded-xl transition-all ${
+              className={`flex items-center space-x-2 px-4 py-2 text-xs font-bold rounded-xl transition-all ${
                 activeTab === 'submit'
                   ? 'bg-sky-600 text-white shadow-md shadow-sky-500/20'
                   : 'text-slate-600 hover:bg-white hover:text-slate-900 border border-transparent hover:border-slate-200'
@@ -148,25 +149,47 @@ export function App() {
             </button>
             <button
               onClick={() => setActiveTab('list')}
-              className={`flex items-center space-x-2 px-5 py-2.5 text-xs font-bold rounded-xl transition-all ${
+              className={`flex items-center space-x-2 px-4 py-2 text-xs font-bold rounded-xl transition-all ${
                 activeTab === 'list'
                   ? 'bg-sky-600 text-white shadow-md shadow-sky-500/20'
                   : 'text-slate-600 hover:bg-white hover:text-slate-900 border border-transparent hover:border-slate-200'
               }`}
             >
               <List className="w-4 h-4" />
-              <span>Track Complaints</span>
+              <span>Citizen Tracker</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('authority')}
+              className={`flex items-center space-x-2 px-4 py-2 text-xs font-bold rounded-xl transition-all ${
+                activeTab === 'authority'
+                  ? 'bg-blue-700 text-white shadow-md shadow-blue-600/20'
+                  : 'text-slate-600 hover:bg-white hover:text-slate-900 border border-transparent hover:border-slate-200'
+              }`}
+            >
+              <UserCheck className="w-4 h-4" />
+              <span>Supervisor Dispatch</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('worker')}
+              className={`flex items-center space-x-2 px-4 py-2 text-xs font-bold rounded-xl transition-all ${
+                activeTab === 'worker'
+                  ? 'bg-amber-600 text-white shadow-md shadow-amber-500/20'
+                  : 'text-slate-600 hover:bg-white hover:text-slate-900 border border-transparent hover:border-slate-200'
+              }`}
+            >
+              <HardHat className="w-4 h-4" />
+              <span>Worker Tasks</span>
             </button>
           </div>
 
           <div className="hidden sm:flex items-center space-x-2 text-xs font-medium text-slate-500">
             <TrendingUp className="w-3.5 h-3.5 text-emerald-500" />
-            <span>98.2% Resolution Accuracy</span>
+            <span>Phase 4 Active</span>
           </div>
         </div>
 
-        {/* Tab Content */}
-        {activeTab === 'submit' ? (
+        {/* Tab Content Display */}
+        {activeTab === 'submit' && (
           <ComplaintForm
             onSuccess={() => {
               setRefreshTrigger((prev) => prev + 1);
@@ -174,12 +197,18 @@ export function App() {
             }}
             onRequireAuth={() => setAuthModalOpen(true)}
           />
-        ) : (
+        )}
+
+        {activeTab === 'list' && (
           <ComplaintList
             refreshTrigger={refreshTrigger}
             onSwitchToSubmit={() => setActiveTab('submit')}
           />
         )}
+
+        {activeTab === 'authority' && <AuthorityDashboard />}
+
+        {activeTab === 'worker' && <WorkerPortal />}
 
         {/* System Health Status Footer */}
         <div className="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-xs space-y-3">
@@ -196,10 +225,10 @@ export function App() {
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <div>
-                <span className="text-xs font-bold text-slate-800 block">RBAC & Auth Engine</span>
+                <span className="text-xs font-bold text-slate-800 block">Supervisor & Worker Modules</span>
                 <span className="text-[11px] text-emerald-600 font-semibold flex items-center space-x-1">
                   <CheckCircle2 className="w-3 h-3 inline" />
-                  <span>Citizen Lifecycle Active</span>
+                  <span>Dispatch & Workflow Active</span>
                 </span>
               </div>
             </div>
